@@ -6,3 +6,6 @@
 # Directories and Files
 - gym :  the excise code based on OpenAI gym step by step
 - xxxx.md :  the study notes of Reinforcement Learnging
+
+# How to read the .md file?
+- Please download the project files and open the .md files with software **Typera**
