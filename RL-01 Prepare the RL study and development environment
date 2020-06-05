@@ -1,0 +1,139 @@
+# Prepare the RL study and development enviroment
+
+*Arthur.Chen  2020/05/06*
+
+[toc]
+
+### Install the Python Environment
+
+```shell
+# download the 64-bit Anaconda with Python 3.7 and install it
+https://repo.anaconda.com/archive/Anaconda3-2020.02-Windows-x86_64.exe
+```
+
+### Test the Python Enviroment:
+
+```shell
+# browse the version
+1)  launch 'Anaconda Prompt'  
+2)  check the version of python and package management 
+
+> python --version
+Python 3.7.2
+
+> anaconda --version
+anaconda Command line client (version 1.7.2)
+
+> conda --version
+conda 4.8.0
+
+> pip --version
+pip 20.0.2 from c:\anaconda3\lib\site-packages\pip (python 3.7)
+```
+
+### Install the gym
+
+```shell
+# install the  minimized gym from the domestic mirror repository
+> pip install gym -i http://mirrors.aliyun.com/pypi/simple --trusted-host mirrors.aliyun.com
+
+# install the  gym[atari-py]
+# 1. select the 'atari_py-1.2.1-cp37-cp37m-win_amd64.whl' and download it from the site
+https://github.com/Kojoley/atari-py/releases
+# 2. install the whl inside the download directory 
+> pip install atari_py*.whl
+
+```
+
+the result is ok when output is as following:
+
+```shell
+Looking in indexes: http://mirrors.aliyun.com/pypi/simple
+Requirement already satisfied: gym in c:\anaconda3\lib\site-packages (0.12.1)
+Requirement already satisfied: scipy in c:\anaconda3\lib\site-packages (from gym) (1.3.0rc1)
+Requirement already satisfied: pyglet>=1.2.0 in c:\anaconda3\lib\site-packages (from gym) (1.3.2)
+Requirement already satisfied: requests>=2.0 in c:\anaconda3\lib\site-packages (from gym) (2.21.0)
+Requirement already satisfied: six in c:\anaconda3\lib\site-packages (from gym) (1.12.0)
+Requirement already satisfied: numpy>=1.10.4 in c:\anaconda3\lib\site-packages (from gym) (1.16.3+mkl)
+Requirement already satisfied: future in c:\anaconda3\lib\site-packages (from pyglet>=1.2.0->gym) (0.17.1)
+Requirement already satisfied: certifi>=2017.4.17 in c:\anaconda3\lib\site-packages (from requests>=2.0->gym) (2019.11.28)
+Requirement already satisfied: idna<2.9,>=2.5 in c:\anaconda3\lib\site-packages (from requests>=2.0->gym) (2.8)
+Requirement already satisfied: chardet<3.1.0,>=3.0.2 in c:\anaconda3\lib\site-packages (from requests>=2.0->gym) (3.0.4)
+Requirement already satisfied: urllib3<1.25,>=1.21.1 in c:\anaconda3\lib\site-packages (from requests>=2.0->gym) (1.24.1)
+```
+
+### Test the gym
+
+gym-study001.py 内容如下:
+
+```shell
+import gym
+
+test_envs={'algorithm':'Copy-v0',
+           'toy_text':'FrozenLake-v0',
+           'control':'CartPole-v0', # option：MountainCar-v0
+           'atari':'SpaceInvaders-v0',# options：'Breakout-ram-v4'，'Seaquest-v0',
+          'mujoco':'Humanoid-v1',     # not feasible on Win10
+          'box2d':'LunarLander-v2' }  # not feasible on Win10
+
+game_name = test_envs['control']
+env = gym.make(game_name)
+for i_episode in range(20):
+    observation = env.reset()
+    for t in range(100):
+        env.render() 
+        print(observation)
+        action = env.action_space.sample()
+        observation, reward, done, info = env.step(action)
+        if done:
+            print("Episode finished after {} timesteps".format(t+1))
+            break
+```
+
+### Run gym example
+
+![img](01-Environment%20Preparation.assets/control.png)
+
+### Install the Python Development Tool: PyCharm
+
+```shell
+# do Application and Download PyCharm
+http://toolcloud.huawei.com/toolmall/tooldetails/614b0c1d73384464b3955699aad96ace
+click button "申请使用" do application, and then download windows version PyCharm: http://toolcloudforum.huawei.com/fdfs/download/relation/9cbb44d5f2f04bca9dfcc96f75661706/pycharm-professional-2019.3.4.exe
+
+
+```
+
+### Configure the PyCharm
+
+```shell
+# Enter these dialog box from Menu of PyCharm:
+File -> Settings... -> Project -> Project Interpreter
+```
+
+![PyCharmSetting01](01-Environment%20Preparation.assets/PyCharmSetting01.png)
+
+![img](01-Environment%20Preparation.assets/PyCharmSetting02.png)
+
+### Launch Jupyter Notebook
+
+```shell
+# search and launch the 'Jupyter notebook' in windows 'Start Menu'
+```
+
+the console window output:
+
+```shell
+[W 10:40:26.110 NotebookApp] WARNING: The notebook server is listening on all IP addresses and not using encryption. This is not recommended.
+[W 10:40:26.111 NotebookApp] WARNING: The notebook server is listening on all IP addresses and not using authentication. This is highly insecure and not recommended.
+[I 10:40:26.161 NotebookApp] JupyterLab extension loaded from C:\Anaconda3\lib\site-packages\jupyterlab
+[I 10:40:26.162 NotebookApp] JupyterLab application directory is C:\Anaconda3\share\jupyter\lab
+[I 10:40:26.163 NotebookApp] Serving notebooks from local directory: E:\ArthurShares\Study
+[I 10:40:26.163 NotebookApp] The Jupyter Notebook is running at:
+[I 10:40:26.163 NotebookApp] http://(DESKTOP-9SLHIMI or 127.0.0.1):8888/nbs/
+[I 10:40:26.163 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+```
+
+the web browser:
+
+![img](01-Environment%20Preparation.assets/jupyter-notebook.png)
