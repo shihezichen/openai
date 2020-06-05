@@ -8,4 +8,4 @@
 - xxxx.md :  the study notes of Reinforcement Learnging
 
 # How to read the .md file?
-- Please download the project files with click the button  named 'Clone and Download' and open the .md files with software **Typera**
+- Please download the project files with click the button  named 'Clone and Download' and open the .md files with software **Typora**
