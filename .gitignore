@@ -2,3 +2,7 @@
 /save/
 /tensorboard/
 
+/checkpoint/
+/gym/.idea/
+
+/weights.txt
