@@ -6,3 +6,10 @@
 /gym/.idea/
 
 /weights.txt
+/.idea/.gitignore
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/openai.iml
+/.idea/other.xml
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea/vcs.xml
